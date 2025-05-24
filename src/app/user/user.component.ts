@@ -1,0 +1,32 @@
+import { Component, computed, EventEmitter, Input,input, OnChanges, Output, output, SimpleChanges } from '@angular/core';
+
+@Component({
+  selector: 'app-user',
+  standalone: true,
+  templateUrl: './user.component.html',
+  styleUrl: './user.component.css'
+})
+
+export class UserComponent implements OnChanges {
+  @Input({required: true}) avatar!: string;
+  @Input({required: true}) name!: string;
+  @Input({required: true}) id!:string;
+
+  @Output() select = new EventEmitter<string>();
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)
+    // if (changes["avatar"]) {
+    //   alert("CHANGED AVATAR")
+    // }
+  }
+
+  get imagePath() {
+    return 'assets/users/' + this.avatar;
+  }
+  
+  onSelectUser() {
+    this.select.emit(this.id);
+  }
+}
+ 
