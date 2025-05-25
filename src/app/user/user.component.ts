@@ -7,20 +7,14 @@ import { Component, computed, EventEmitter, Input,input, OnChanges, Output, outp
   styleUrl: './user.component.css'
 })
 
-export class UserComponent implements OnChanges {
+export class UserComponent {
   @Input({required: true}) avatar!: string;
   @Input({required: true}) name!: string;
   @Input({required: true}) id!:string;
 
   @Output() select = new EventEmitter<string>();
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes)
-    // if (changes["avatar"]) {
-    //   alert("CHANGED AVATAR")
-    // }
-  }
-
+ 
   get imagePath() {
     return 'assets/users/' + this.avatar;
   }

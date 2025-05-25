@@ -10,25 +10,17 @@ import { TasksComponent } from './tasks/tasks.component';
   imports: [HeaderComponent,UserComponent, TasksComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   users = DUMMY_USERS;
   selectedUserId = 'u1';
-  actualSelectedUser: any | undefined;
-
-  ngOnInit(): void {
-    console.log("INIT")  
-  }
-
-  get selectedUser(): any {
-    console.log("DOING COMPARATION")
-    return this.users.find(user => user.id === this.selectedUserId)!;
+  
+  get selectedUser() {
+      return this.users.find(user => user.id === this.selectedUserId);
   }
 
   onSelectUser(id:string) {
     this.selectedUserId = id;
-    this.actualSelectedUser = this.selectedUser
   }
 
 }
