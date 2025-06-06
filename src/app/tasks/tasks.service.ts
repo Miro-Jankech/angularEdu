@@ -27,7 +27,7 @@ export class TasksService {
       },
     ];
 
-    getUserTask(userId: string) {
+    getUserTasks(userId: string) {
       return this.tasks.filter((task) => task.userId === userId)
     }
 
